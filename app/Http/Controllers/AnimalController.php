@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Animal;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,7 +26,8 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view("pages.upload");
+        $DBImage = Image::all();
+        return view("pages.upload", compact('DBImage'));
     }
 
     /**
@@ -38,8 +40,10 @@ class AnimalController extends Controller
     {
        $store = new Animal;
        $store->animal = $request->animal;
+       $store->src = $request->src;
        $store->save();
-       
+       return redirect()->back();
+
     }
 
     /**

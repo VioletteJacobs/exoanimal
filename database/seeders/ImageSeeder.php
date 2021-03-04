@@ -15,9 +15,12 @@ class ImageSeeder extends Seeder
     public function run()
     {
         DB::table("images")->insert([
-            [
-                "src"=> "paon.jpg"
-            ],
+            // [
+            //     "src"=> "paon.jpg"
+            // ],
+            // [
+            //     "src"=> "girafe.jpg"
+            // ],
         ]);
     }
 }

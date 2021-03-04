@@ -15,14 +15,14 @@ class AnimalSeeder extends Seeder
     public function run()
     {
         DB::table('animals')->insert([
-            [
-                "animal" => "girafe",
-                "src" => "girafle.jpg"
-            ],
-            [
-                "animal" => "paon",
-                "src" => "paon.jpg"
-            ],
+            // [
+            //     "animal" => "girafe",
+            //     "src" => "girafle.jpg"
+            // ],
+            // [
+            //     "animal" => "paon",
+            //     "src" => "paon.jpg"
+            // ],
 
         ]);
     }
