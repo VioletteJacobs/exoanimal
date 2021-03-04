@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\ImageController;
+use App\Models\Animal;
+use Database\Seeders\AnimalSeeder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $DBAnimal = Animal::all();
+    return view('welcome', compact("DBAnimal"));
 });
+// Route::get('/upload', [AnimalController::class, "upload"]);
+route::resource('animals', AnimalController::class);
+route::resource('images', ImageController::class);

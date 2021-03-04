@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Animal;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class AnimalController extends Controller
+class ImageController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     return view("welcome");
-    // }
+    public function index()
+    {
+        
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +25,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        return view("pages.upload");
+        return view("pages.create");
     }
 
     /**
@@ -36,19 +36,20 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-       $store = new Animal;
-       $store->animal = $request->animal;
-       $store->save();
-       
+        $store = new Image;
+        $store->src = $request->file("src")->hashName();
+        $store->save();
+        Storage::put('public/img/', $request->file('src'));
+        return redirect("/");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Animal  $animal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Animal $animal)
+    public function show($id)
     {
         //
     }
@@ -56,10 +57,10 @@ class AnimalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Animal  $animal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Animal $animal)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +69,10 @@ class AnimalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Animal  $animal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Animal $animal)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,12 +80,11 @@ class AnimalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Animal  $animal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Animal $animal)
+    public function destroy($id)
     {
         //
     }
-
 }
