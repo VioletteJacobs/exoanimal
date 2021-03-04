@@ -86,9 +86,16 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Animal $animal)
+    public function destroy($id)
     {
-        //
+        $destroy = Animal::find($id);
+        Storage::delete("public/img/".$destroy->src);
+        $destroy->delete();
+        $destroyImage = Image::find($id);
+        Storage::delete("public/img/".$destroyImage->src);
+        $destroyImage->delete();
+        return redirect()->back();
     }
+
 
 }

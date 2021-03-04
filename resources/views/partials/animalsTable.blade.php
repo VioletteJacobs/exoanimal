@@ -12,6 +12,13 @@
             <th scope="row">{{$item->id}}</th>
             <td>{{$item->animal}}</td>
             <td>{{$item->src}}</td>
+            <td>
+              <form action="/animals/{{$item->id}}" method="POST">
+                @csrf
+                @method("DELETE")
+                <button class="btn btn-danger" type="submit">Delete</button>
+              </form>
+            </td>
             </tr>
         @endforeach
 
