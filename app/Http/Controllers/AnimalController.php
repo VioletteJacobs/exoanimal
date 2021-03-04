@@ -97,5 +97,10 @@ class AnimalController extends Controller
         return redirect()->back();
     }
 
+    public function download($id){
+        $down = Image::find($id);
+        return Storage::download("public/img/".$down->src);
+    }
+
 
 }

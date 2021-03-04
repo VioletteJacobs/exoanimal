@@ -22,5 +22,7 @@ Route::get('/', function () {
     return view('welcome', compact("DBAnimal"));
 });
 // Route::get('/upload', [AnimalController::class, "upload"]);
+route::get("/download-animal/{id}",[AnimalController::class, "download"]);
+
 route::resource('animals', AnimalController::class);
 route::resource('images', ImageController::class);

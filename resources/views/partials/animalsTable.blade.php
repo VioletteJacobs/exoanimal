@@ -19,6 +19,9 @@
                 <button class="btn btn-danger" type="submit">Delete</button>
               </form>
             </td>
+            <td>
+              <a href="/download-animal/{{$item->id}}" class="btn btn-success">Download</a>
+            </td>
             </tr>
         @endforeach
 
